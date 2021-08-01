@@ -49,7 +49,7 @@
         </table>
 
         <h1>Cash register</h1>
-        <select name="" id="" ng-model="lista.productoSeleccionado">
+        <select ng-model="lista.productoSeleccionado">
             <option ng-repeat="producto in lista.productos" value="{{ producto.id }}">{{ producto.nombre }}</option>
         </select>
         <input type="number" ng-model="lista.cantidad">

@@ -10,24 +10,45 @@
     <title>Document</title>
 </head>
 <body ng-controller="MyNGController">
-    <h2>Posts</h2>
-    <table cellspacing="0">
-        <thead>
-            <tr>
-                <td>Title</td>
-                <td>Body</td>
-                <td>Author</td>
-                <td>EMail</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="post in posts">
-                <td><strong>{{ post.title }}</strong></td>
-                <td>{{ post.body }}</td>
-                <td>{{ post.author.name }}</td>
-                <td>{{ post.author.email }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section>
+        <h2>Create a new post</h2>
+        <p>
+            <label>Title</label><br>
+            <input type="text" ng-model="newPost.title">
+        </p>
+        <p>
+            <label>Body</label><br>
+            <textarea rows="4" ng-model="newPost.body"></textarea>
+        </p>
+        <p>
+            <label>Author</label><br>
+            <select ng-model="userSelected">
+                <option ng-repeat="user in users" value="{{ user.id }}">{{ user.name }}</option>
+            </select>
+        </p>
+        <button ng-click="addPost()">Add Post</button>
+    </section>
+
+    <section>
+        <h2>Posts</h2>
+        <table cellspacing="0">
+            <thead>
+                <tr>
+                    <td>Title</td>
+                    <td>Body</td>
+                    <td>Author</td>
+                    <td>EMail</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="post in posts">
+                    <td><strong>{{ post.title }}</strong></td>
+                    <td>{{ post.body }}</td>
+                    <td>{{ post.author.name }}</td>
+                    <td>{{ post.author.email }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>
