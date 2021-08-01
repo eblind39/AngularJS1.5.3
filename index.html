@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyNGApp">
+    <head>
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="icon" type="image/png" sizes="32x32" href="Assets/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="Assets/images/favicon-16x16.png">
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="node_modules/angular-route/angular-route.min.js"></script>
+        <script src="/Assets/scripts/index.js"></script>
+        <link rel="stylesheet" href="Assets/css/main.css">
+        <title>My First Angular Project!</title>
+    </head>
+    <body ng-controller="controlador as lista">
+        <div id="menu">
+            <ul>
+                <li><a href="#!">Index</a></li>
+                <li><a href="#!cajero">Cajero</a></li>
+                <li><a href="#!productos">Productos</a></li>
+            </ul>
+        </div>
+        <div ng-view></div>
+
+        <h1>Inventory (Products)</h1>
+        <p>
+            <label for="">Nombre</label><br />
+            <input type="text" ng-model="lista.nombre">
+        <p/>
+        <p>
+            <label for="">Precio</label><br />
+            <input type="number" ng-model="lista.precio">
+        <p/>
+        <input type="button" value="A&ntilde;adir" ng-click="lista.addProducto()">
+        <table cellspacing="0">
+            <thead>
+                <tr>
+                    <td>Producto</td>
+                    <td>Precio</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="producto in lista.productos">
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.precio }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>Cash register</h1>
+        <select name="" id="" ng-model="lista.productoSeleccionado">
+            <option ng-repeat="producto in lista.productos" value="{{ producto.id }}">{{ producto.nombre }}</option>
+        </select>
+        <input type="number" ng-model="lista.cantidad">
+        <input type="button" value="A&ntilde;adir" ng-click="lista.addAlCarrito()">
+        <table cellspacing="0">
+            <thead>
+                <tr>
+                    <td>Producto</td>
+                    <td>Precio</td>
+                    <td>Cantidad</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="producto in lista.carrito">
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                    <td>{{ producto.total }}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td>${{ lista.getTotalCarrito() }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Basic example</h2>
+        <input type="text" ng-model="nombre">
+        <label>Hola {{ nombre }}!</label><br />
+    </body>
+</html>
