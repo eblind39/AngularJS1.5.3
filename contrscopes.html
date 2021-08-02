@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyNGApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="Assets/scripts/contrscopes.js"></script>
+    <link rel="stylesheet" href="Assets/css/main.css">
+    <title>Document</title>
+</head>
+<body ng-controller="MyNGController">
+    {{ nombre }}
+    <p><strong>Valor del padre: </strong>{{ $parent.nombre }}</p>
+    <div ng-controller="ChildController">
+        <p><strong>Valor del hijo: </strong>{{ nombre }}</p>
+        <input type="text" ng-model="$parent.nombre">
+    </div>
+</body>
+</html>
