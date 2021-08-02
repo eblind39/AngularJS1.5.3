@@ -4,14 +4,17 @@ MyNGApp.controller("MyNGController", ["$scope", "$http", function(s, h) {
     s.posts = [];
     s.users = [];
     s.newPost = {};
+    s.loading = true;
 
     h.get("https://jsonplaceholder.typicode.com/posts")
         .success(function(data) {
             s.posts = data;
             s.bindUsers();
+            s.loading = false;
         })
         .error(function(err) {
             console.log(err);
+            s.loading = false;
         });
     
     s.bindUsers = function() {

@@ -88,3 +88,19 @@ body{
   }
 
   
+/*----httpsample----*/
+#tblListaPosts {
+    width: 80% !important;
+}
+
+.animated {
+    opacity: 1;
+    max-height: auto;
+    overflow: hidden;
+    transition: all 2s;
+}
+.animated.ng-hide {
+    opacity: 0;
+    max-height: 0px !important;
+    display: block !important;
+}

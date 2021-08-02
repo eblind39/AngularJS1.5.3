@@ -31,7 +31,7 @@
 
     <section>
         <h2>Posts</h2>
-        <table cellspacing="0">
+        <table id="tblListaPosts" cellspacing="0">
             <thead>
                 <tr>
                     <td>Title</td>
@@ -41,11 +41,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="post in posts">
+                <tr ng-show="posts.length > 0" class="animated" ng-repeat="post in posts">
                     <td><strong>{{ post.title }}</strong></td>
                     <td>{{ post.body }}</td>
                     <td>{{ post.author.name }}</td>
                     <td>{{ post.author.email }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4" ng-show="loading">Cargando...</td>
+                    <td colspan="4" ng-show="!loading && posts.length == 0">No se encontraron resultados.</td>
                 </tr>
             </tbody>
         </table>
